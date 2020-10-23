@@ -1,9 +1,9 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://kh4rzpt:<kh4rzpt>@cluster0.iddca.mongodb.net/<dbname>?retryWrites=true&w=majority',
-{ useMongoClient: true});
+mongoose.set('useCreateIndex', true);
 
+mongoose.connect('mongodb+srv://kh4rzpt:kh4rzpt@cluster0.iddca.mongodb.net/<dbname>?retryWrites=true&w=majority', 
+{ useNewUrlParser: true, useUnifiedTopology: true })
 mongoose.Promise = global.Promise;
-
 
 module.exports = mongoose;

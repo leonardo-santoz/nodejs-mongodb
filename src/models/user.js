@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('../database');
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
         required: true,
         select: false
     },
-    creatd_at: {
+    created_at: {
         type: Date,
         default: Date.now
     }
