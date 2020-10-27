@@ -4,18 +4,16 @@ const authMiddleware = require('../middlewares/auth');
 const Project = require('../models/Project');
 const Task = require('../models/Task');
 const logger = require('../logger');
-// const pinoHttp = require('pino-http')({ logger });
 
 const router = express.Router();
 
 router.use(authMiddleware)
-// router.use(pinoHttp)
 
 router.get('/', async (request, response) => {
     try {
         const projects = await Project.find().populate(['user', 'tasks']);
 
-        return response.send(projects);   
+        return response.send(projects);
     } catch (error) {
         return response.status(400).send({ error: 'Error to loading projects' })
     }
@@ -56,6 +54,7 @@ router.post('/', async (request, response) => {
 
         return response.send(project);
     } catch (error) {
+        logger.error('Error to creating a project: ', error)
         return response.status(400).send({ error: 'Error to creating a new project' })
     }
 });

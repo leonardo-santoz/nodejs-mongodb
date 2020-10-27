@@ -1,8 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const logger = require('./logger/index');
+const logger = require('./logger');
 
-logger.info('Testing a log message')
+logger.info('testing a log message');
 
 const app = express();
 
