@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "nodemon ./src/index.js",
+    "docker-compose": "docker-compose -f service.yml up -d",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +20,7 @@
     "mongoose": "^5.10.10",
     "nodemon": "^2.0.6",
     "winston": "^3.3.3",
+    "winston-elasticsearch": "^0.11.0",
     "winston-mongodb": "^5.0.5"
   },
   "devDependencies": {}

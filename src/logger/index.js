@@ -1,5 +1,6 @@
 const { createLogger, transports, format } = require('winston');
 require('winston-mongodb');
+const { ElasticsearchTransport } = require('winston-elasticsearch');
 
 const logger = createLogger({
     transports: [
@@ -17,8 +18,15 @@ const logger = createLogger({
             options: { useUnifiedTopology: true },
             collection: 'logs',
             format: format.combine(format.timestamp(), format.json())
-        })
+        }),
     ]
 })
+//tranport to elasticsearch
+logger.add(new ElasticsearchTransport({
+    // esTransportOpts,
+    index: "logging",
+    level: 'info',
+    clientOpts: { node: 'http://localhost:9200', }
+}))
 
 module.exports = logger;
