@@ -14,6 +14,7 @@ const logger = createLogger({
         new transports.MongoDB({
             level: 'error',
             db: 'mongodb+srv://kh4rzpt:kh4rzpt@cluster0.iddca.mongodb.net/test_db?retryWrites=true&w=majority',
+            options: { useUnifiedTopology: true },
             collection: 'logs',
             format: format.combine(format.timestamp(), format.json())
         })
